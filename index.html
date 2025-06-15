@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Navbar Toggle Dual</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Cho logo nằm giữa khi thu gọn */
+      @media (max-width: 991.98px) {
+        .navbar .center-logo {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      /* CSS cho ảnh responsive và có cùng chiều cao */
+      .img-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 75%; /* Tỷ lệ khung hình 4:3 (chiều cao = 75% chiều rộng) */
+        overflow: hidden;
+      }
+
+      .img-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Đảm bảo ảnh bao phủ toàn bộ vùng mà không bị méo */
+      }
+
+      /* Điều chỉnh chiều cao ảnh cho màn hình medium và lớn hơn */
+      @media (min-width: 768px) {
+        .img-wrapper {
+          padding-bottom: 100%; /* Tỷ lệ khung hình 1:1 cho màn hình md trở lên */
+        }
+      }
+
+      /* Bạn có thể tinh chỉnh lại tỷ lệ khung hình hoặc chiều cao cố định nếu muốn */
+      /* Ví dụ: Chiều cao cố định cho màn hình lớn */
+      @media (min-width: 992px) {
+        .img-wrapper {
+          height: 300px; /* Chiều cao cố định cho màn hình lớn */
+          padding-bottom: 0; /* Bỏ padding-bottom khi có height cố định */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header
+      style="
+        background-image: url('https://i.pinimg.com/736x/6b/db/2a/6bdb2a9b6c8c50fa759d8e9863de24d1.jpg');
+      "
+      class="header-bg-img d-flex align-items-start justify-content-end p-3"
+    >
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Tìm kiếm..."
+          id="searchInput"
+        />
+        <button class="btn btn-outline-success" type="submit">Tìm</button>
+      </form>
+    </header>
+
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light position-relative px-3"
+    >
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler order-1"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainMenu"
+          aria-controls="mainMenu"
+          aria-expanded="false"
+          aria-label="Toggle menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a
+          class="navbar-brand mx-lg-0 mx-auto center-logo order-0 order-lg-1"
+          href="#"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/25/25694.png"
+            alt="Logo"
+            width="30"
+            height="30"
+            class="d-inline-block align-text-top me-2"
+          />
+          Trang chủ
+        </a>
+
+        <button
+          class="navbar-toggler order-2"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#authMenu"
+          aria-controls="authMenu"
+          aria-expanded="false"
+          aria-label="Toggle auth"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-between order-lg-2"
+          id="mainMenu"
+        >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownSảnPhẩm"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sản phẩm
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownSảnPhẩm">
+                <li><a class="dropdown-item" href="#">Sản phẩm A</a></li>
+                <li><a class="dropdown-item" href="#">Sản phẩm B</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sản phẩm khác</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Dịch vụ</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Giới thiệu</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
+          </ul>
+        </div>
+
+        <div
+          class="collapse navbar-collapse order-lg-3 justify-content-end"
+          id="authMenu"
+        >
+          <div class="d-flex gap-2">
+            <button
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              Đăng nhập
+            </button>
+            <button
+              class="btn btn-success"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+            >
+              Đăng ký
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-4">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="img-wrapper rounded shadow-sm">
+            <img
+              src="https://i.pinimg.com/736x/4c/6e/a8/4c6ea85bec9a25c43b159af08d4361cb.jpg"
+              alt="Ảnh 1"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="img-wrapper rounded shadow-sm">
+            <img
+              src="https://i.pinimg.com/736x/c6/51/ef/c651efb1f503193963659cda76ea48a1.jpg"
+              alt="Ảnh 2"
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="img-wrapper rounded shadow-sm">
+            <img
+              src="https://i.pinimg.com/736x/60/75/ea/6075eab864880a8a638b054585c10d9e.jpg"
+              alt="Ảnh 3"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-4 col-12 mb-4">
+          <div class="p-3 border rounded shadow-sm h-100">
+            <h5>Áo thun cá tính</h5>
+            <p>
+              Thoải mái, trẻ trung, phù hợp đi chơi hay dạo phố. Nhiều màu sắc
+              để bạn lựa chọn!
+            </p>
+            <a href="#" class="btn btn-outline-primary">Xem thêm</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="p-3 border rounded shadow-sm h-100">
+            <h5>Quần jean phong cách</h5>
+            <p>
+              Quần jean form đẹp, bền màu, phối đồ dễ dàng từ basic tới
+              streetwear cá tính.
+            </p>
+            <a href="#" class="btn btn-outline-primary">Xem thêm</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="p-3 border rounded shadow-sm h-100">
+            <h5>Áo khoác đa năng</h5>
+            <p>
+              Giữ ấm mùa lạnh, chống nắng mùa hè. Thiết kế tiện lợi và cực kỳ
+              thời trang.
+            </p>
+            <a href="#" class="btn btn-outline-primary">Xem thêm</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="text-center py-3 bg-light"
+      id="mainFooter"
+      data-original-text='
+      <div class="container">
+        <p class="mb-1">
+          Địa chỉ liên lạc: 123 Đường ABC, Phường XYZ, Thành phố Nha Trang
+        </p>
+        <p class="mb-1">Số điện thoại: 0123 456 789</p>
+        <p class="mb-1">Bản quyền © 2025 Website. Đã đăng ký bản quyền.</p>
+        <p class="mb-0">Thiết kế bởi: Trương Ngự Quyền 64131995</p>
+      </div>
+    '
+    >
+      <div class="container">
+        <p class="mb-1">
+          Địa chỉ liên lạc: 123 Đường ABC, Phường XYZ, Thành phố Nha Trang
+        </p>
+        <p class="mb-1">Số điện thoại: 0123 456 789</p>
+        <p class="mb-1">Bản quyền © 2025 Website. Đã đăng ký bản quyền.</p>
+        <p class="mb-0">Thiết kế bởi: Trương Ngự Quyền 64131995</p>
+      </div>
+    </footer>
+
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Đăng nhập</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="loginPassword" class="form-label">Mật khẩu</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                />
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="rememberMe"
+                />
+                <label class="form-check-label" for="rememberMe"
+                  >Nhớ mật khẩu</label
+                >
+              </div>
+              <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <p>
+              Chưa có tài khoản?
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#registerModal"
+                data-bs-dismiss="modal"
+                >Đăng ký ngay</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="registerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerModalLabel">Đăng ký</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="registerName" class="form-label"
+                  >Tên người dùng</label
+                >
+                <input type="text" class="form-control" id="registerName" />
+              </div>
+              <div class="mb-3">
+                <label for="registerEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="registerEmail" />
+              </div>
+              <div class="mb-3">
+                <label for="registerPassword" class="form-label"
+                  >Mật khẩu</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label"
+                  >Xác nhận mật khẩu</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                />
+              </div>
+              <button type="submit" class="btn btn-success">Đăng ký</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <p>
+              Đã có tài khoản?
+              <a
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+                data-bs-dismiss="modal"
+                >Đăng nhập ngay</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Lấy các phần tử cần thiết
+      const searchInput = document.getElementById("searchInput");
+      const mainFooter = document.getElementById("mainFooter");
+
+      // Lấy nội dung HTML ban đầu của footer và lưu vào một biến
+      const originalFooterContent = mainFooter.innerHTML;
+
+      // Thêm sự kiện 'input' để theo dõi sự thay đổi của ô tìm kiếm
+      searchInput.addEventListener("input", function () {
+        const searchText = this.value.trim(); // Lấy giá trị từ ô tìm kiếm và loại bỏ khoảng trắng thừa
+
+        if (searchText) {
+          // Nếu có nội dung tìm kiếm, thay thế nội dung footer
+          mainFooter.innerHTML = `<div class="container"><p class="mb-0">Kết quả tìm kiếm cho: <strong>${searchText}</strong></p></div>`;
+        } else {
+          // Nếu ô tìm kiếm trống, khôi phục nội dung footer ban đầu
+          mainFooter.innerHTML = originalFooterContent;
+        }
+      });
+    </script>
+  </body>
+</html>

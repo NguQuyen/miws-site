@@ -1,0 +1,10 @@
+/* Hiệu ứng hover cho các liên kết trong menu */
+.navbar-nav .nav-link {
+  transition: background-color 0.3s ease, color 0.3s ease; /* Thêm transition để hiệu ứng mượt mà */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #e9ecef; /* Màu nền khi hover */
+  color: #007bff; /* Màu chữ khi hover */
+  border-radius: 5px; /* Bo tròn góc nhẹ */
+}
